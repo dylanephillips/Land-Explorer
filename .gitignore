@@ -1,0 +1,26 @@
+# Node modules (if using npm for any tooling)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# IDE/project-specific files
+.vscode/
+.idea/
+
+# PHP/MySQL temporary files
+*.sql
+*.sqlite
+*.bak
+
+# Build or temporary files
+dist/
+build/
+*.tmp
+
+# Save or session files (optional, if auto-generated)
+saves/
