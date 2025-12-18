@@ -1,0 +1,80 @@
+<!--
+************************************************************
+ * File Name: customer_service.html
+ * Description:
+ *    Provides a user interface for contacting the game 
+ *    developer. Allows players to submit questions, 
+ *    feedback, or issues using a simple contact form.
+ *
+ * Behavior / Objectives:
+ *    - Collects user input: name, email, subject, message
+ *    - Submits the form data via POST to the server script
+ *      "../assignment2_land/api/send_email.php"
+ *    - Provides a "Back to Menu" button to return to main menu
+ *
+ * Expected Inputs:
+ *    - Name: string, user's name
+ *    - Email: string, user's email address (valid format)
+ *    - Subject: string, title of the message
+ *    - Message: string, detailed message content
+ *
+ * Expected Outputs / Results:
+ *    - Sends email to developer using server-side PHP script
+ *    - Displays confirmation or error (handled server-side)
+ *
+ * Called By:
+ *    - User accesses via game menu
+ *
+ * Will Call / Dependencies:
+ *    - "../assignment2_land/api/send_email.php" to process form
+ *    - "css/customer_service.css" for styling
+************************************************************
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Service</title>
+
+    <!-- CSS: Styles for the contact form panel -->
+    <link rel="stylesheet" href="css/customer_service.css">
+</head>
+<body>
+
+    <!--
+Main container for the customer service form. Contains a header, instructions, the form fields, 
+submit button, and a back-to-menu button.
+-->
+
+<div class="form-container">
+    <h1>Contact the Game Developer</h1>
+    <p>Have questions or feedback? Fill out the form below!</p>
+
+    <!-- Customer contact form -->
+    <form id="customerForm" action="../land_explorer/api/send_email.php" method=POST>
+         <!-- User name input -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+    
+        <!-- User email input -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+    
+        <!-- Message subject input -->
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" placeholder="Feedback or question" required>
+    
+        <!-- Message textarea -->
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+         <!-- Submit button: sends form data to server -->
+        <button type="submit">Send Message</button>
+    </form>
+
+     <!-- Back to menu button -->
+    <button onclick="window.location.href='index.html'">Back to Menu</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+/**********************************************************************
+ * File Name: game.css
+ * Description:
+ *    Styles the main gameplay interface of "Land Explorer". This includes
+ *    the game canvas, compass, HUD (heads-up display), pause button,
+ *    menu panels (pause and win screens), and responsive adjustments.
+ *
+ * Expected Inputs:
+ *    - Applied to HTML elements in game.html:
+ *        #gameCanvas, #hud, #seedCounter, #timerDisplay, #pauseButton,
+ *        #pauseMenu, #winMenu, #compassPanel, #compassCanvas
+ *
+ * Expected Outputs / Results:
+ *    - Visually distinct HUD and canvas area
+ *    - Responsive design for desktop and mobile
+ *    - Interactive buttons and menu panels with hover/active effects
+ *
+ * Called By / Dependencies:
+ *    - Linked in game.html
+ *    - Depends on Google Fonts import for Inter font
+ **********************************************************************/
+
+ /* ==============================================================
+   Root Variables
+   --------------------------------------------------------------
+   Define colors, fonts, and shadows for consistent styling.
+============================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+:root {
+  --panel-bg: rgba(255, 255, 255, 0.95);
+  --hud-bg: rgba(0, 0, 0, 0.7);
+  --accent: #4ade80; /* Brighter green for contrast */
+  --accent-hover: #16a34a; /* Darker green for hover/shadow */
+  --font: "Inter", sans-serif;
+  --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --shadow-deep: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ==============================================================
+   Base Styles
+   --------------------------------------------------------------
+   Set default font, margin, background, and overflow for game.
+============================================================== */
+html, body {
+  margin: 0;
+  height: 100vh;
+  font-family: var(--font);
+  background: linear-gradient(to bottom right, #d8f3dc 0%, #b7e4c7 100%);
+  overflow: hidden;
+  color: #333;
+}
+
+/* ==============================================================
+   HUD (Heads-Up Display)
+   --------------------------------------------------------------
+   Display seed counter and timer above the game canvas.
+============================================================== */
+#hud {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  right: 18px;
+  z-index: 80;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  pointer-events: none;
+}
+
+#seedCounter, #timerDisplay {
+  pointer-events: auto;
+  background: var(--hud-bg);
+  padding: 10px 18px;
+  border-radius: 9999px; 
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-deep);
+  text-align: center;
+  min-width: 85px; 
+}
+
+#timerDisplay {
+  background-color: rgba(69, 149, 87, 0.8); 
+}
+
+
+/* ==============================================================
+   Game Area Layout
+   --------------------------------------------------------------
+   Canvas and compass positioning, responsive sizing.
+============================================================== */
+#gameArea {
+  position: absolute;
+  top: 90px;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem; 
+  padding: 0 20px;
+}
+
+#canvasWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 80vw;
+  max-height: calc(100vh - 122px); 
+}
+
+#gameCanvas {
+  background: #051c1f;
+  border: 6px solid #1f373a; 
+  border-radius: 16px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+#compassPanel {
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+#compassCanvas {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1), 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* ==============================================================
+   Pause Button
+   --------------------------------------------------------------
+   Positioned top-right corner with hover and active effects.
+============================================================== */
+#pauseButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 50;
+  padding: 10px 16px;
+  font-size: 1.2rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  pointer-events: auto; 
+}
+
+#pauseButton:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+#pauseButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ==============================================================
+   Menu Panels (Pause & Win)
+   --------------------------------------------------------------
+   Centered modal with backdrop blur, rounded corners, shadows.
+============================================================== */
+.menuPanel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--panel-bg);
+  backdrop-filter: blur(5px);
+  padding: 40px;
+  border-radius: 18px;
+  text-align: center;
+  z-index: 100;
+  box-shadow: var(--shadow-deep);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  max-width: 90vw; 
+}
+
+.menuPanel h2 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #1a4731; 
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.menuPanel button {
+  margin: 8px;
+  padding: 12px 24px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 0 0 var(--accent-hover), 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.menuPanel button:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 2px 0 0 var(--accent-hover), 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+.menuPanel button:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 0 var(--accent-hover), 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ==============================================================
+   Custom Alert Box (Injected by JS)
+============================================================== */
+#simple-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* ==============================================================
+   Responsive Adjustments
+============================================================== */
+@media (min-width: 900px) {
+  #compassPanel {
+    display: flex;
+  }
+}
+@media (max-width: 768px) {
+  #gameArea {
+    top: 70px;
+    bottom: 10px;
+    gap: 1rem;
+  }
+
+  #compassPanel {
+    display: none; 
+  }
+ 
+  #seedCounter, #timerDisplay {
+    font-size: 1rem;
+    padding: 8px 14px;
+    min-width: 75px;
+  }
+
+  #pauseButton {
+    padding: 8px 12px;
+    font-size: 1rem;
+  }
+  
+  .menuPanel {
+    padding: 30px 20px;
+  }
+}

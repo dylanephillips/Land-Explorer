@@ -1,0 +1,161 @@
+/**********************************************************************
+ * File Name: menu.css
+ * Description:
+ *    Styles the main menu, tutorial, avatar selection, and related
+ *    menu panels for the "Land Explorer" game.
+ *    Includes layout, typography, color scheme, button styles, and
+ *    hover/active/disabled states.
+ *
+ * Expected Inputs:
+ *    - Applied to HTML elements with classes and IDs as defined
+ *      in menu.html, tutorial.html, avatar.html, etc.
+ *
+ * Expected Outputs / Results:
+ *    - Consistent, visually appealing UI for menus
+ *    - Interactive buttons with hover, active, and disabled states
+ *    - Responsive layout across different devices
+ *
+ * Called By / Dependencies:
+ *    - Linked in index.html, tutorial.html, avatar.html, customer_service.html
+ *    - Depends on Google Fonts import for Inter font family
+ **********************************************************************/
+ 
+ /* ==============================================================
+   Root Variables & Font
+   --------------------------------------------------------------
+   Define primary colors, fonts, and opacity for panels and HUD.
+============================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+:root{
+  --menu-bg: #fdfdf7;
+  --panel: rgba(255,255,255,0.85);
+  --hud-bg: rgba(0,0,0,0.45);
+  --accent: #7dd3a6; 
+  --accent-dark: #59b68d;
+  --muted: #6b7280;
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ==============================================================
+   Global / Body Reset
+   --------------------------------------------------------------
+   Reset default browser styles and center menu with flexbox.
+============================================================== */
+html,body{
+  height:100%; 
+  margin:0; 
+  font-family:var(--font); 
+  background:linear-gradient(135deg,#e0f7fa, #f0fff4); 
+  display:flex; 
+  align-items:center;
+  justify-content:center;
+}
+
+/* ==============================================================
+   Menu Container
+   --------------------------------------------------------------
+   Defines the main menu panel, with rounded corners, shadow,
+   padding, and width for card-like style.
+============================================================== */
+.menu{
+  background:var(--menu-bg); 
+  border-radius:18px; 
+  padding:40px 30px; 
+  text-align:center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05); 
+  z-index:40; 
+  width:320px; 
+}
+.menu h1{
+  margin:0 0 8px; 
+  font-size:32px; 
+  letter-spacing:0.8px; 
+  color:#1f2937;
+  font-weight:900;
+}
+.menu .subtitle{
+  color:var(--muted); 
+  margin-bottom:24px; 
+  font-size:15px;
+}
+.menuButtons{
+  display:flex; 
+  flex-direction:column; 
+  gap:10px;
+  align-items:center;
+}
+
+/* ==============================================================
+   Menu Buttons
+   --------------------------------------------------------------
+   Styles buttons for start, resume, avatar, tutorial, etc.
+   Includes hover, active, and disabled states.
+============================================================== */
+.menuButtons button{
+  width:100%; 
+  margin:0; 
+  padding:14px 20px; 
+  border-radius:12px; 
+  border:none; 
+  background:var(--accent); 
+  cursor:pointer; 
+  font-weight:700; 
+  color:#fff; 
+  font-size:17px; 
+  letter-spacing:0.4px;
+  box-shadow:0 8px 15px rgba(125, 211, 166, 0.4); 
+  transition:transform .15s cubic-bezier(.2, .8, .4, 1), box-shadow .15s ease, background .15s ease;
+}
+.menuButtons button:hover:not(:disabled){
+  transform:translateY(-3px); 
+  background:var(--accent-dark);
+  box-shadow:0 12px 20px rgba(125, 211, 166, 0.5); 
+}
+.menuButtons button:active:not(:disabled){
+  transform:translateY(0);
+  box-shadow:0 5px 10px rgba(125, 211, 166, 0.3);
+}
+.menuButtons button:disabled{
+  opacity:.6; 
+  cursor:not-allowed; 
+  background:#cbd5e1; 
+  color:#64748b;
+  transform:none;
+  box-shadow:none;
+}
+
+/* ==============================================================
+   Instruction Text
+   --------------------------------------------------------------
+   Styles instructional or descriptive text below menu buttons.
+============================================================== */
+.menu > p {
+  color: #94a3b8 !important; 
+  font-style: italic;
+}
+
+/* ==============================================================
+   Footer
+   --------------------------------------------------------------
+   Footer for author/project credit. 
+============================================================== */
+#footer{ 
+  position: absolute; 
+  bottom:20px; 
+  left:50%;
+  transform: translateX(-50%);
+  color:rgba(0,0,0,0.55); 
+  font-size:14px; 
+  text-align: center;
+}
+#footer a{ 
+  color:inherit; 
+  text-decoration:none; 
+  padding:8px 12px; 
+  background:rgba(255,255,255,0.7); 
+  border-radius:10px; 
+  transition: background .2s ease;
+}
+#footer a:hover {
+  background:rgba(255,255,255,0.9);
+}

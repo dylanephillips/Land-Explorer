@@ -1,0 +1,54 @@
+<!--
+************************************************************
+ * File Name: avatar.html
+ * Description:
+ *    Provides a user interface for creating or editing
+ *    a player avatar in the Explorer game. Allows the
+ *    user to select a name and a primary color, then
+ *    save it to the server or cancel to return to the
+ *    main menu.
+ * Behavior / Interactions:
+ *    - Player inputs name and chooses a color
+ *    - "Save Avatar" button triggers JavaScript (avatar.js)
+ *      to send data to the server
+ *    - "Cancel" button returns to main menu without saving
+ * Dependencies:
+ *    - avatar.css for styling
+ *    - avatar.js for functionality (saving/canceling)
+************************************************************
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Explorer Avatar</title>
+   <!-- CSS: Styles for avatar editor panel -->
+  <link rel="stylesheet" href="css/avatar.css">
+  <!-- JavaScript: Handles saving/canceling avatar and UI alerts -->
+  <script src="javascript/avatar.js" defer></script>
+</head>
+<body>
+   <!--
+  Main avatar editor panel. Contains input fields for player name and color,
+  and buttons for canceling or saving the avatar.
+  -->
+  <div class="avatarPanel">
+    <h1>Create Your Explorer</h1>
+
+    <!-- Player name input -->
+    <label for="playerName">Name</label>
+    <input id="playerName" type="text" placeholder="Lyra">
+
+    <!-- Player color input -->
+    <label for="playerColor">Primary Color</label>
+    <input id="playerColor" type="color" value="#3b82f6">
+
+    <!-- Action buttons: Cancel and Save -->
+    <div class="avatarButtons">
+      <button id="cancelAvatar">Cancel</button>
+      <button id="saveAvatar">Save Avatar</button>
+    </div>
+  </div>
+</body>
+</html>

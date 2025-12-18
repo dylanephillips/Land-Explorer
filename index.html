@@ -1,0 +1,83 @@
+<!--
+************************************************************
+ * File Name: index.html
+ * Description:
+ *    Main menu interface for "Land Explorer" game.
+ *    Provides buttons for starting a new game, resuming
+ *    a saved game, editing/creating an avatar, accessing
+ *    the tutorial, and contacting customer service.
+ *    Plays menu background music and shows instructions.
+ *
+ * Behavior / Objectives:
+ *    - Loads menu music and sets up looping background audio
+ *    - Checks server for existing save to enable/disable Resume button
+ *    - Navigates player to the appropriate page based on button clicked
+ *    - Displays instructions and credits
+ *
+ * Expected Inputs:
+ *    - User mouse clicks or keyboard interaction for button navigation
+ *
+ * Expected Outputs / Results:
+ *    - Updates page navigation (game.html, avatar.html, tutorial.html, customer_service.html)
+ *    - Plays menu music after user interaction
+ *    - Enables/disables "Resume Game" based on server save
+ *
+ * Called By:
+ *    - Accessed directly via browser
+ *
+ * Will Call / Dependencies:
+ *    - "css/menu.css" for styling
+ *    - "javascript/menu.js" for button functionality and server save checks
+************************************************************
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Land Explorer — Menu</title>
+   <!-- External CSS for styling menu interface -->
+  <link rel="stylesheet" href="css/menu.css">
+  <!-- External JS for button event handling, server save checks, and menu music -->
+  <script src="javascript/menu.js" defer></script>
+</head>
+<body>
+
+  <!--
+  ===========================================================
+  Menu Music
+  -----------------------------------------------------------
+  Background music for the main menu. Paused initially due
+  to browser autoplay restrictions. Played on first user click.
+  ===========================================================
+  -->
+  <audio id="menuMusic" src="assets/sounds/menu.mp3" loop></audio>
+
+  <!--
+  ===========================================================
+  Main Menu Panel
+  -----------------------------------------------------------
+  Displays game title, subtitle, and interactive buttons.
+  Buttons handled by menu.js for navigation and server checks.
+  ===========================================================
+  -->
+  <div class="menu" id="mainMenu">
+    <h1>Land Explorer</h1>
+    <div class="subtitle">Rediscover the lost Spirit Seeds</div>
+
+    <!-- Menu Buttons -->
+    <div class="menuButtons">
+      <button id="startBtn">Start New Game</button>
+      <button id="resumeBtn">Resume Game</button>
+      <button id="avatarBtn">Create Avatar</button>
+      <button id="tutorialBtn">Tutorial</button>
+      <button id="customerServiceBtn" class="specialButton" onclick="window.location.href='customer_service.html'">
+        Customer Service
+      </button>
+    </div>
+  </div>
+
+  <div id="footer">
+    <a href="#">Project by Dylan Phillips</a>
+  </div>
+</body>
+</html>

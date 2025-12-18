@@ -1,0 +1,125 @@
+<!--
+************************************************************
+ * File Name: game.html
+ * Description:
+ *    Main game interface for "Land Explorer".
+ *    Provides the canvas where the game world is drawn, 
+ *    HUD elements (seed counter, timer), compass display,
+ *    pause and win menus, and pause button.
+ *
+ * Behavior / Objectives:
+ *    - Initializes the game canvas and HUD elements
+ *    - Integrates pause and win menus controlled via game.js
+ *    - Displays player progress (seeds collected, timer)
+ *    - Provides interactive buttons: pause, resume, quit, restart
+ *
+ * Expected Inputs:
+ *    - Player interactions via keyboard (movement) and buttons
+ *
+ * Expected Outputs / Results:
+ *    - Renders game graphics on canvas
+ *    - Updates HUD dynamically via game.js
+ *    - Shows/hides menus depending on game state
+ *
+ * Called By:
+ *    - User accesses via menu.html or via resume/new game logic
+ *
+ * Will Call / Dependencies:
+ *    - "css/game.css" for styling
+ *    - "javascript/game.js" for game logic, drawing, HUD updates
+************************************************************
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Land Explorer — Game</title>
+  <!-- Links to the external CSS for styling -->
+  <link rel="stylesheet" href="css/game.css">
+  <!-- Links to the external JavaScript for game logic and UI handlers -->
+  <script src="javascript/game.js" defer></script>
+</head>
+<body>
+
+  
+  <!--
+  ===========================================================
+  HUD (Heads-Up Display)
+  -----------------------------------------------------------
+  Displays player progress: number of seeds collected and 
+  elapsed game time. Elements are dynamically updated by 
+  game.js during gameplay.
+  ===========================================================
+  -->
+  <div id="hud">
+    <div id="seedCounter">Seeds: 0/3</div>
+    <div id="timerDisplay">00:00</div>
+    <div style="flex:1"></div>
+  </div>
+
+ <!--
+  ===========================================================
+  Game Area
+  -----------------------------------------------------------
+  Contains the main canvas for rendering the game world and
+  a separate compass canvas for navigation aid.
+  ===========================================================
+  -->
+  <div id="gameArea">
+    <div id="canvasWrap">
+      <canvas id="gameCanvas" width="768" height="576"></canvas>
+    </div>
+
+    <!--
+      Main game canvas:
+      - Rendered via game.js
+      - Draws player, regions, seeds, waves, crates, fog
+    -->
+    <div id="compassPanel">
+      <canvas id="compassCanvas" width="120" height="120"></canvas>
+    </div>
+  </div>
+
+  <!--
+  ===========================================================
+  Pause Button
+  -----------------------------------------------------------
+  Allows the player to pause/resume the game at any time.
+  Controlled via game.js.
+  ===========================================================
+  -->
+  <button id="pauseButton">⏸</button>
+
+    <!--
+  ===========================================================
+  Pause Menu
+  -----------------------------------------------------------
+  Displayed when the game is paused. Provides options to
+  resume or quit to main menu. Visibility controlled via
+  game.js.
+  ===========================================================
+  -->
+  <div id="pauseMenu" class="menuPanel" style="display:none;">
+    <h2>Game Paused</h2>
+    <button id="resumeBtn">Resume</button>
+    <button id="quitBtn">Quit to Menu</button>
+  </div>
+
+   <!--
+  ===========================================================
+  Win Menu
+  -----------------------------------------------------------
+  Displayed when the player completes the game objectives
+  (collects all seeds and reaches the monument).
+  Provides options to restart or return to main menu.
+  Visibility controlled via game.js.
+  ===========================================================
+  -->
+  <div id="winMenu" class="menuPanel" style="display:none;">
+    <h2>🎉 You Restored the Land!</h2>
+    <button id="restartWin">Restart</button>
+    <button id="menuWin">Main Menu</button>
+  </div>
+</body>
+</html>

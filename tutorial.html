@@ -1,0 +1,59 @@
+<!--
+************************************************************
+ * File Name: tutorial.html
+ * Description:
+ *    Provides instructions for the "Land Explorer" game.
+ *    Explains controls, objectives, and gameplay mechanics
+ *    so that players understand how to play the game.
+ *
+ * Behavior / Objectives:
+ *    - Display tutorial information in a simple, readable format
+ *    - Provide instructions on movement, objectives, and interactions
+ *    - Include a button to return to the main menu
+ *
+ * Expected Inputs:
+ *    - User mouse click on the "Back" button
+ *
+ * Expected Outputs / Results:
+ *    - Redirects user back to index.html (main menu)
+ *
+ * Called By:
+ *    - Accessed directly from menu.html via Tutorial button
+ *
+ * Will Call / Dependencies:
+ *    - "css/menu.css" for styling
+************************************************************
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial</title>
+    <!-- External CSS for styling tutorial menu -->
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+
+    <!--
+  ===========================================================
+  Tutorial Panel
+  -----------------------------------------------------------
+  Contains instructions for the player to understand game
+  mechanics and controls. Includes Back button to return
+  to main menu.
+  ===========================================================
+  -->
+    <div class="menu">
+        <h1>Tutorial</h1>
+        <p>Use arrow keys or W A S D to move.</p>
+        <p>Collect 5 spirit seeds hidden in the land.</p>
+        <p>Follow the golden compass arrow.</p>
+        <p>Avoid obstacles</p>
+        <p>Complete challenges</p>
+        <p>To interact press enter</p>
+        <button onclick="window.location.href='index.html'">Back</button>
+    </div>
+
+</body>
+</html>
